@@ -4,8 +4,8 @@
 
 /* DOM VARIABLES (they can be global) */
 const ui = {
-  playerOne: document.querySelector('.score1'),
-  playerTwo: document.querySelector('.score2'),
+  playerOne: document.querySelector('#score1'),
+  playerTwo: document.querySelector('#score2'),
   iconNow: document.querySelector('.icon__now'),
   gridElement: document.querySelectorAll('.grid__element')
 }
@@ -28,23 +28,31 @@ function gameState () {
       /* position = prompt(`Gracz: ${player1.name}`) */
       //!
       if (gameboard1.gameboard[position] === '') {
-        lastPlayer = 'o'
+        switchLastPlayer()
+
+        ui.iconNow.src = './icons/cross.svg'
         gameboard1.addToBoard(position, player1)
+        gameboard1.showArray()
+
         hasWon(player1)
       } else if (gameboard1.gameboard[position] === undefined) {
         console.log('select from 1-9')
       } else {
         console.error('Possition occupied')
-        gameboard1.showArray()
         lastPlayer = 'x'
+        gameboard1.showArray()
       }
     } else if (lastPlayer === 'o') {
       //! get position not from prompt but from clicked tile
       /* position = prompt(`Gracz: ${player2.name}`) */
       //!
       if (gameboard1.gameboard[position] === '') {
-        lastPlayer = 'x'
+        switchLastPlayer()
+        ui.iconNow.src = './icons/circle.svg'
+
         gameboard1.addToBoard(position, player2)
+        gameboard1.showArray()
+
         hasWon(player2)
       } else if (gameboard1.gameboard[position] === undefined) {
         console.log('select from 1-9')
@@ -53,6 +61,15 @@ function gameState () {
         lastPlayer = 'o'
         gameboard1.showArray()
       }
+    }
+  }
+  const switchLastPlayer = () => {
+    if (lastPlayer === 'x') {
+      lastPlayer = 'o'
+      return 'o'
+    } else {
+      lastPlayer = 'x'
+      return 'x'
     }
   }
   const hasWon = player => {
@@ -89,6 +106,9 @@ function gameState () {
         gameboard1.gameboard[6] === player.sign)
     ) {
       console.log(`${player.name} Has won!`)
+      player.givePlayerPoints()
+      console.log(player.getPlayerPoints())
+      ui.playerOne.innerText = player.getPlayerPoints()
     } else {
       gameState1.isDraw()
     }
@@ -106,7 +126,7 @@ function gameState () {
       console.log(`Not a draw yet!`)
     }
   }
-  return { playRound, hasWon, isDraw }
+  return { playRound, hasWon, isDraw, lastPlayer, switchLastPlayer }
 }
 const gameState1 = gameState()
 
@@ -131,7 +151,7 @@ const gameboard1 = createGameBoard()
 function createPlayer (name, sign) {
   let points = 0
   const getPlayerPoints = () => {
-    points
+    console.log(points)
   }
   const givePlayerPoints = () => {
     points++
