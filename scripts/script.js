@@ -118,7 +118,11 @@ function gameState () {
       console.log(`${player.name} Has won!`)
       player.givePlayerPoints()
       console.log(player.getPlayerPoints())
-      ui.playerOne.innerText = `${player.getPlayerPoints()}`
+      if (player.sign === 'o') {
+        ui.playerOne.innerText = `${player.getPlayerPoints()}`
+      } else {
+        ui.playerTwo.innerText = `${player.getPlayerPoints()}`
+      }
     } else {
       gameState1.isDraw()
     }
@@ -136,7 +140,7 @@ function gameState () {
       console.log(`Not a draw yet!`)
     }
   }
-  return { playRound, hasWon, isDraw, lastPlayer, switchLastPlayer }
+  return { playRound, hasWon, isDraw }
 }
 const gameState1 = gameState()
 
