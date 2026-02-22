@@ -2,9 +2,23 @@
 // * store a gameboard as an array inside of Gameboard Object!
 // * Players are going to be stored in Objects
 
+/* DOM VARIABLES (they can be global) */
+const ui = {
+  playerOne: document.querySelector('.score1'),
+  playerTwo: document.querySelector('.score2'),
+  iconNow: document.querySelector('.icon__now'),
+  gridElement: document.querySelectorAll('.grid__element')
+}
+ui.gridElement.forEach(element => {
+  element.addEventListener('click', e => {
+    console.log(e.currentTarget.id)
+  })
+})
+
 //* so 3 objects: game (state of the game), player, gameboard
 function gameState () {
   let lastPlayer = 'x'
+
   const playRound = () => {
     if (lastPlayer === 'x') {
       //! get position not from prompt but from clicked tile
@@ -135,7 +149,7 @@ gameboard1.addToBoard(2, player2)
 gameboard1.addToBoard(4, player1)
 gameboard1.addToBoard(6, player2)
 gameboard1.addToBoard(7, player1) */
-gameState1.playRound()
+/* gameState1.playRound() */
 
 console.log(
   `${gameboard1.gameboard[0]} | ${gameboard1.gameboard[1]} | ${gameboard1.gameboard[2]}`
