@@ -11,7 +11,10 @@ const ui = {
 }
 ui.gridElement.forEach(element => {
   element.addEventListener('click', e => {
-    console.log(e.currentTarget.id)
+    let targetId = e.currentTarget.id
+    let targetIdNum = targetId.substring(targetId.length - 1)
+    position = parseInt(targetIdNum)
+    gameState1.playRound()
   })
 })
 
@@ -30,12 +33,10 @@ function gameState () {
         hasWon(player1)
       } else if (gameboard1.gameboard[position] === undefined) {
         console.log('select from 1-9')
-        playRound()
       } else {
         console.error('Possition occupied')
         gameboard1.showArray()
         lastPlayer = 'x'
-        playRound()
       }
     } else if (lastPlayer === 'o') {
       //! get position not from prompt but from clicked tile
@@ -47,12 +48,10 @@ function gameState () {
         hasWon(player2)
       } else if (gameboard1.gameboard[position] === undefined) {
         console.log('select from 1-9')
-        playRound()
       } else {
         console.error('Possition occupied')
         lastPlayer = 'o'
         gameboard1.showArray()
-        playRound()
       }
     }
   }
@@ -105,8 +104,6 @@ function gameState () {
       console.log(`It's a draw!`)
     } else {
       console.log(`Not a draw yet!`)
-
-      gameState1.playRound()
     }
   }
   return { playRound, hasWon, isDraw }
