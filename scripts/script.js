@@ -18,13 +18,17 @@ function gameState () {
       let targetId = e.currentTarget.id
       let targetIdNum = targetId.substring(targetId.length - 1)
       position = parseInt(targetIdNum)
-      gameState1.playRound()
-      if (lastPlayer === 'x') {
-        e.currentTarget.children[0].src = './icons/cross.svg'
+      if (lastPlayer === 'o') {
+        if (gameboard1.gameboard[position] === '') {
+          e.currentTarget.children[0].src = './icons/cross.svg'
+        }
       } else {
-        console.log('Boom Bap')
-        e.currentTarget.children[0].src = './icons/circle.svg'
+        if (gameboard1.gameboard[position] === '') {
+          console.log('Boom Bap')
+          e.currentTarget.children[0].src = './icons/circle.svg'
+        }
       }
+      gameState1.playRound()
     })
   })
   const playRound = () => {
