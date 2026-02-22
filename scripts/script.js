@@ -143,7 +143,6 @@ function gameState () {
     for (let i = 0; i < 9; i++) {
       if (gameboard1.gameboard[i] != '') {
         isFull++
-        console.log(isFull)
       }
     }
     if (isFull === 9) {
@@ -155,7 +154,6 @@ function gameState () {
         ui.gameAlert.innerText = ``
       }, 2000)
     } else {
-      console.log(`Not a draw yet!`)
     }
   }
   const resetGame = () => {
@@ -167,7 +165,7 @@ function gameState () {
       /*     for (let i = 0; i < 9; i++) {
       gameboard1.gameboard[i] = ''
     } */
-      console.table(gameboard1.gameboard)
+      console.log('Next round!')
     }, 2000)
     ui.gridElement.forEach(element => {
       setTimeout(() => {
@@ -192,7 +190,6 @@ function createGameBoard (player) {
     for (let i = 0; i < 9; i++) {
       gameboard[i] = ''
     }
-    console.log('aray cleared')
   }
   const showArray = () => {
     console.log(`${gameboard[0]} | ${gameboard[1]} | ${gameboard[2]}`)
@@ -232,16 +229,6 @@ gameboard1.addToBoard(4, player1)
 gameboard1.addToBoard(6, player2)
 gameboard1.addToBoard(7, player1) */
 /* gameState1.playRound() */
-
-console.log(
-  `${gameboard1.gameboard[0]} | ${gameboard1.gameboard[1]} | ${gameboard1.gameboard[2]}`
-)
-console.log(
-  `${gameboard1.gameboard[3]} | ${gameboard1.gameboard[4]} | ${gameboard1.gameboard[5]}`
-)
-console.log(
-  `${gameboard1.gameboard[6]} | ${gameboard1.gameboard[7]} | ${gameboard1.gameboard[8]}`
-)
 
 //*gameboard array [ , , ] [ , , ] [ , , ] (3 rows, 3 collumns). I will have to somehow call object and put my choices at specific position in array. ex. /playerX(9)? puts X in bottom right corner
 
