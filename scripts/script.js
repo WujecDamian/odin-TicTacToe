@@ -214,8 +214,8 @@ function createPlayer (name, sign) {
 
   return { sign, name, getPlayerPoints, givePlayerPoints, resetPoints }
 }
-const player1 = createPlayer('Player1', 'o')
-const player2 = createPlayer('Player2', 'x')
+const player1 = createPlayer(prompt('Give player 1 Name!'), 'o')
+const player2 = createPlayer(prompt('Give player 2 Name!'), 'x')
 ui.restartBtn.addEventListener('click', () => {
   player1.resetPoints()
   player2.resetPoints()
