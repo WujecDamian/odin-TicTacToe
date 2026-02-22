@@ -175,8 +175,25 @@ function gameState () {
   }
   return { playRound, hasWon, isDraw, resetGame }
 }
-const gameState1 = gameState()
 
+const gameState1 = gameState()
+function createPlayer (name, sign) {
+  let points = 0
+  const getPlayerPoints = () => {
+    return points
+  }
+  const givePlayerPoints = () => {
+    points++
+  }
+  const resetPoints = () => {
+    points = 0
+  }
+
+  return { sign, name, getPlayerPoints, givePlayerPoints, resetPoints }
+}
+const player1 = createPlayer(prompt('Give player 1 Name!'), 'o')
+
+const player2 = createPlayer(prompt('Give player 2 Name!'), 'x')
 function createGameBoard (player) {
   let gameboard = ['', '', '', '', '', '', '', '', '']
   const addToBoard = (position, player) => {
@@ -200,22 +217,7 @@ function createGameBoard (player) {
 }
 const gameboard1 = createGameBoard()
 //*player function (takes name.) circle and cross (2players). So i have to create two new players /factory function? can i use function closures?
-function createPlayer (name, sign) {
-  let points = 0
-  const getPlayerPoints = () => {
-    return points
-  }
-  const givePlayerPoints = () => {
-    points++
-  }
-  const resetPoints = () => {
-    points = 0
-  }
 
-  return { sign, name, getPlayerPoints, givePlayerPoints, resetPoints }
-}
-const player1 = createPlayer(prompt('Give player 1 Name!'), 'o')
-const player2 = createPlayer(prompt('Give player 2 Name!'), 'x')
 ui.restartBtn.addEventListener('click', () => {
   player1.resetPoints()
   player2.resetPoints()
