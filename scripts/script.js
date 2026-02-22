@@ -33,7 +33,7 @@ function gameState () {
 
     /* for now poorly writen - can do it better with for? n, n+1, n+2? n, n+3, n+6 */
     if (
-        /* horizontal lines win */
+      /* horizontal lines win */
       (gameboard1.gameboard[0] === player.sign &&
         gameboard1.gameboard[1] === player.sign &&
         gameboard1.gameboard[2] === player.sign) ||
@@ -43,8 +43,8 @@ function gameState () {
       (gameboard1.gameboard[6] === player.sign &&
         gameboard1.gameboard[7] === player.sign &&
         gameboard1.gameboard[8] === player.sign) ||
-        /* vertical lines win */
-         (gameboard1.gameboard[0] === player.sign &&
+      /* vertical lines win */
+      (gameboard1.gameboard[0] === player.sign &&
         gameboard1.gameboard[3] === player.sign &&
         gameboard1.gameboard[6] === player.sign) ||
       (gameboard1.gameboard[1] === player.sign &&
@@ -53,10 +53,17 @@ function gameState () {
       (gameboard1.gameboard[2] === player.sign &&
         gameboard1.gameboard[5] === player.sign &&
         gameboard1.gameboard[8] === player.sign) ||
+      /* diagonal lines win */
+      (gameboard1.gameboard[0] === player.sign &&
+        gameboard1.gameboard[4] === player.sign &&
+        gameboard1.gameboard[8] === player.sign) ||
+      (gameboard1.gameboard[2] === player.sign &&
+        gameboard1.gameboard[4] === player.sign &&
+        gameboard1.gameboard[6] === player.sign)
     ) {
-      console.log('Win')
+      console.log(`${player.name} Has won!`)
     } else {
-      console.log('Not won yet')
+      gameState1.playRound()
     }
   }
   return { playRound, hasWon }
@@ -98,14 +105,6 @@ gameboard1.addToBoard(2, player2)
 gameboard1.addToBoard(4, player1)
 gameboard1.addToBoard(6, player2)
 gameboard1.addToBoard(7, player1) */
-
-gameState1.playRound()
-gameState1.playRound()
-gameState1.playRound()
-gameState1.playRound()
-gameState1.playRound()
-gameState1.playRound()
-gameState1.playRound()
 
 console.log(
   `${gameboard1.gameboard[0]} | ${gameboard1.gameboard[1]} | ${gameboard1.gameboard[2]}`
