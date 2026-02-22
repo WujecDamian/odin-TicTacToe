@@ -31,6 +31,21 @@ function gameState () {
       gameState1.playRound()
     })
   })
+  const resetGame = () => {
+    gameboard1.clearArray()
+    gameboard1.gameboard.length = 0
+    gameboard1.clearArray()
+
+    /*     for (let i = 0; i < 9; i++) {
+      gameboard1.gameboard[i] = ''
+    } */
+    console.table(gameboard1.gameboard)
+    ui.gridElement.forEach(element => {
+      setTimeout(() => {
+        element.children[0].src = ''
+      }, 2000)
+    })
+  }
   const playRound = () => {
     if (lastPlayer === 'x') {
       //! get position not from prompt but from clicked tile
@@ -123,10 +138,12 @@ function gameState () {
       } else {
         ui.playerTwo.innerText = `${player.getPlayerPoints()}`
       }
+      gameState1.resetGame()
     } else {
       gameState1.isDraw()
     }
   }
+
   const isDraw = player => {
     let isEmpty = 0
     for (let i = 0; i < gameboard1.gameboard.length; i++) {
@@ -140,12 +157,13 @@ function gameState () {
       console.log(`Not a draw yet!`)
     }
   }
-  return { playRound, hasWon, isDraw }
+
+  return { playRound, hasWon, isDraw, resetGame }
 }
 const gameState1 = gameState()
 
 function createGameBoard (player) {
-  const gameboard = ['', '', '', '', '', '', '', '', '']
+  let gameboard = ['', '', '', '', '', '', '', '', '']
   const addToBoard = (position, player) => {
     if (gameboard[position] === '') {
       gameboard.splice(position, 1, player.sign)
@@ -153,12 +171,16 @@ function createGameBoard (player) {
       console.log('Position occupied')
     }
   }
+  const clearArray = boardArray => {
+    gameboard1.gameboard = ['', '', '', '', '', '', '', '', '']
+    console.log('aray cleared')
+  }
   const showArray = () => {
     console.log(`${gameboard[0]} | ${gameboard[1]} | ${gameboard[2]}`)
     console.log(`${gameboard[3]} | ${gameboard[4]} | ${gameboard[5]}`)
     console.log(`${gameboard[6]} | ${gameboard[7]} | ${gameboard[8]}`)
   }
-  return { gameboard, addToBoard, showArray }
+  return { gameboard, addToBoard, showArray, clearArray }
 }
 const gameboard1 = createGameBoard()
 //*player function (takes name.) circle and cross (2players). So i have to create two new players /factory function? can i use function closures?
