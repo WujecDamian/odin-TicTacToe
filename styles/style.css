@@ -18,8 +18,19 @@ body {
 .grid__element {
   display: grid;
   place-content: center;
-  border: 1px solid white;
+  border: 3px solid rgba(0, 22, 223, 0.63);
+  filter: drop-shadow(0px 0px 30px rgba(0, 22, 223, 1));
+  border-radius: 1rem;
   aspect-ratio: 1/1;
+  transition:
+    background-color 0.15s ease-in-out,
+    border-radius 0.2s ease-in-out;
+}
+.grid__element:hover {
+  background-color: rgba(255, 255, 255, 0.01);
+  border-radius: 3rem;
+
+  cursor: pointer;
 }
 #element-one {
   border-left: none;
