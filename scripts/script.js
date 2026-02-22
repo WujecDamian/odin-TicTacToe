@@ -172,7 +172,9 @@ function createGameBoard (player) {
     }
   }
   const clearArray = boardArray => {
-    gameboard1.gameboard = ['', '', '', '', '', '', '', '', '']
+    for (let i = 0; i < 9; i++) {
+      gameboard[i] = ''
+    }
     console.log('aray cleared')
   }
   const showArray = () => {
