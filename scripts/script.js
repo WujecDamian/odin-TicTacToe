@@ -9,19 +9,24 @@ const ui = {
   iconNow: document.querySelector('.icon__now'),
   gridElement: document.querySelectorAll('.grid__element')
 }
-ui.gridElement.forEach(element => {
-  element.addEventListener('click', e => {
-    let targetId = e.currentTarget.id
-    let targetIdNum = targetId.substring(targetId.length - 1)
-    position = parseInt(targetIdNum)
-    gameState1.playRound()
-  })
-})
 
 //* so 3 objects: game (state of the game), player, gameboard
 function gameState () {
   let lastPlayer = 'x'
-
+  ui.gridElement.forEach(element => {
+    element.addEventListener('click', e => {
+      let targetId = e.currentTarget.id
+      let targetIdNum = targetId.substring(targetId.length - 1)
+      position = parseInt(targetIdNum)
+      gameState1.playRound()
+      if (lastPlayer === 'x') {
+        e.currentTarget.children[0].src = './icons/cross.svg'
+      } else {
+        console.log('Boom Bap')
+        e.currentTarget.children[0].src = './icons/circle.svg'
+      }
+    })
+  })
   const playRound = () => {
     if (lastPlayer === 'x') {
       //! get position not from prompt but from clicked tile
@@ -30,7 +35,8 @@ function gameState () {
       if (gameboard1.gameboard[position] === '') {
         switchLastPlayer()
 
-        ui.iconNow.src = './icons/cross.svg'
+        ui.iconNow.setAttribute('src', './icons/cross.svg')
+
         gameboard1.addToBoard(position, player1)
         gameboard1.showArray()
 
@@ -48,7 +54,7 @@ function gameState () {
       //!
       if (gameboard1.gameboard[position] === '') {
         switchLastPlayer()
-        ui.iconNow.src = './icons/circle.svg'
+        ui.iconNow.setAttribute('src', './icons/circle.svg')
 
         gameboard1.addToBoard(position, player2)
         gameboard1.showArray()
@@ -108,7 +114,7 @@ function gameState () {
       console.log(`${player.name} Has won!`)
       player.givePlayerPoints()
       console.log(player.getPlayerPoints())
-      ui.playerOne.innerText = player.getPlayerPoints()
+      ui.playerOne.innerText = `${player.getPlayerPoints()}`
     } else {
       gameState1.isDraw()
     }
@@ -151,7 +157,7 @@ const gameboard1 = createGameBoard()
 function createPlayer (name, sign) {
   let points = 0
   const getPlayerPoints = () => {
-    console.log(points)
+    return points
   }
   const givePlayerPoints = () => {
     points++
