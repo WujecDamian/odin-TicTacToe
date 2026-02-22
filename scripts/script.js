@@ -24,28 +24,13 @@ function gameState () {
         }
       } else {
         if (gameboard1.gameboard[position] === '') {
-          console.log('Boom Bap')
           e.currentTarget.children[0].src = './icons/circle.svg'
         }
       }
       gameState1.playRound()
     })
   })
-  const resetGame = () => {
-    gameboard1.clearArray()
-    gameboard1.gameboard.length = 0
-    gameboard1.clearArray()
 
-    /*     for (let i = 0; i < 9; i++) {
-      gameboard1.gameboard[i] = ''
-    } */
-    console.table(gameboard1.gameboard)
-    ui.gridElement.forEach(element => {
-      setTimeout(() => {
-        element.children[0].src = ''
-      }, 2000)
-    })
-  }
   const playRound = () => {
     if (lastPlayer === 'x') {
       //! get position not from prompt but from clicked tile
@@ -145,19 +130,38 @@ function gameState () {
   }
 
   const isDraw = player => {
-    let isEmpty = 0
-    for (let i = 0; i < gameboard1.gameboard.length; i++) {
+    let isFull = 0
+    for (let i = 0; i < 9; i++) {
       if (gameboard1.gameboard[i] != '') {
-        isEmpty++
+        isFull++
+        console.log(isFull)
       }
     }
-    if (isEmpty === 0) {
+    if (isFull === 9) {
       console.log(`It's a draw!`)
+      ui.iconNow.innerText = 'Draw'
+      setTimeout(() => {
+        gameState1.resetGame()
+      }, 2000)
     } else {
       console.log(`Not a draw yet!`)
     }
   }
+  const resetGame = () => {
+    gameboard1.clearArray()
+    gameboard1.gameboard.length = 0
+    gameboard1.clearArray()
 
+    /*     for (let i = 0; i < 9; i++) {
+      gameboard1.gameboard[i] = ''
+    } */
+    console.table(gameboard1.gameboard)
+    ui.gridElement.forEach(element => {
+      setTimeout(() => {
+        element.children[0].src = ''
+      }, 2000)
+    })
+  }
   return { playRound, hasWon, isDraw, resetGame }
 }
 const gameState1 = gameState()
