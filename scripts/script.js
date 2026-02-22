@@ -16,7 +16,10 @@ function gameState () {
         console.log('select from 1-9')
         playRound()
       } else {
+        console.error('Possition occupied')
+        gameboard1.showArray()
         lastPlayer = 'x'
+        playRound()
       }
     } else if (lastPlayer === 'o') {
       position = prompt(`Gracz: ${player2.name}`)
@@ -28,7 +31,10 @@ function gameState () {
         console.log('select from 1-9')
         playRound()
       } else {
+        console.error('Possition occupied')
         lastPlayer = 'o'
+        gameboard1.showArray()
+        playRound()
       }
     }
   }
