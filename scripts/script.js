@@ -12,6 +12,9 @@ function gameState () {
         lastPlayer = 'o'
         gameboard1.addToBoard(position, player1)
         hasWon(player1)
+      } else if (gameboard1.gameboard[position] === undefined) {
+        console.log('select from 1-9')
+        playRound()
       } else {
         lastPlayer = 'x'
       }
@@ -21,6 +24,9 @@ function gameState () {
         lastPlayer = 'x'
         gameboard1.addToBoard(position, player2)
         hasWon(player2)
+      } else if (gameboard1.gameboard[position] === undefined) {
+        console.log('select from 1-9')
+        playRound()
       } else {
         lastPlayer = 'o'
       }
@@ -61,12 +67,28 @@ function gameState () {
     ) {
       console.log(`${player.name} Has won!`)
     } else {
+      gameState1.isDraw()
+    }
+  }
+  const isDraw = player => {
+    let isEmpty = 0
+    for (let i = 0; i < gameboard1.gameboard.length; i++) {
+      if (gameboard1.gameboard[i] != '') {
+        isEmpty++
+      }
+    }
+    if (isEmpty === 0) {
+      console.log(`It's a draw!`)
+    } else {
+      console.log(`Not a draw yet!`)
+
       gameState1.playRound()
     }
   }
-  return { playRound, hasWon }
+  return { playRound, hasWon, isDraw }
 }
 const gameState1 = gameState()
+
 function createGameBoard (player) {
   const gameboard = ['', '', '', '', '', '', '', '', '']
   const addToBoard = (position, player) => {
