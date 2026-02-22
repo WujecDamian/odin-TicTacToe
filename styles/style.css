@@ -86,14 +86,14 @@ body {
 .grid__element:hover .element__icon img {
   transform: scale(1.5) matrix(0, 1, 1, 0, 0, 0);
 }
-.element__icon img {
+.element__icon {
   filter: brightness(0) saturate(100%) invert(79%) sepia(88%) saturate(2836%)
     hue-rotate(83deg) brightness(107%) contrast(117%)
     drop-shadow(0px 0px 30px #00ffaa);
   width: 100px;
   transition: transform 0.3s ease-in-out;
 }
-.element__icon img[src*="circle"] {
+.grid__element img[src*="circle"] {
   filter: brightness(0) saturate(100%) invert(56%) sepia(32%) saturate(1072%)
     hue-rotate(286deg) brightness(100%) contrast(105%)
     drop-shadow(0px 0px 30px #ff69b4);
