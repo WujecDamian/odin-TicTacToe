@@ -8,9 +8,9 @@ const ui = {
   playerTwo: document.querySelector('#score2'),
   iconNow: document.querySelector('.icon__now'),
   gridElement: document.querySelectorAll('.grid__element'),
-  gameAlert: document.querySelector('.game__alert')
+  gameAlert: document.querySelector('.game__alert'),
+  restartBtn: document.querySelector('#restart-btn')
 }
-
 //* so 3 objects: game (state of the game), player, gameboard
 function gameState () {
   let lastPlayer = 'x'
@@ -211,10 +211,20 @@ function createPlayer (name, sign) {
   const givePlayerPoints = () => {
     points++
   }
-  return { sign, name, getPlayerPoints, givePlayerPoints }
+  const resetPoints = () => {
+    points = 0
+  }
+
+  return { sign, name, getPlayerPoints, givePlayerPoints, resetPoints }
 }
 const player1 = createPlayer('Player1', 'o')
 const player2 = createPlayer('Player2', 'x')
+ui.restartBtn.addEventListener('click', () => {
+  player1.resetPoints()
+  player2.resetPoints()
+  ui.playerOne.innerText = `${player1.getPlayerPoints()}`
+  ui.playerTwo.innerText = `${player2.getPlayerPoints()}`
+})
 
 /* gameboard1.addToBoard(1, player1)
 gameboard1.addToBoard(2, player2)

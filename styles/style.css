@@ -23,6 +23,24 @@ body {
   background-color: rgb(10, 10, 10);
   color: white;
 }
+header {
+  display: grid;
+  place-content: center;
+}
+#restart-btn {
+  background: none;
+  color: rgba(255, 255, 255, 0.267);
+  border: none;
+  font-weight: 900;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease-in,
+    color 0.2s ease-in 0.2s;
+}
+#restart-btn:hover {
+  transform: translateY(-2px);
+  color: rgba(255, 255, 255, 0.658);
+}
 .textInfo {
   display: flex;
   justify-content: space-around;
