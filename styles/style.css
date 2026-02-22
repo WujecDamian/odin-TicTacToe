@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 body {
   background-color: rgb(10, 10, 10);
   color: white;
@@ -5,16 +8,19 @@ body {
 body {
   display: grid;
   place-content: center;
+  min-height: 95vh;
 }
 .tictactoe__grid {
   place-content: center;
-  align-self: center;
   display: grid;
   grid-template: repeat(3, 1fr) / repeat(3, minmax(50px, 250px));
 }
 .grid__element {
+  display: grid;
+  place-content: center;
   border: 1px solid white;
   aspect-ratio: 1/1;
 }
+
 .element__icon {
 }
