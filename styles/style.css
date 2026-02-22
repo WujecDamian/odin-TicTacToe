@@ -60,5 +60,14 @@ body {
   border-right: none;
   border-bottom: none;
 }
-.element__icon {
+.element__icon img {
+  filter: brightness(0) saturate(100%) invert(79%) sepia(88%) saturate(2836%)
+    hue-rotate(83deg) brightness(107%) contrast(117%)
+    drop-shadow(0px 0px 30px #00ffaa);
+  width: 100px;
+}
+.element__icon img[src*="circle"] {
+  filter: brightness(0) saturate(100%) invert(56%) sepia(32%) saturate(1072%)
+    hue-rotate(286deg) brightness(100%) contrast(105%)
+    drop-shadow(0px 0px 30px #ff69b4);
 }
