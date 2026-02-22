@@ -7,7 +7,9 @@ function gameState () {
   let lastPlayer = 'x'
   const playRound = () => {
     if (lastPlayer === 'x') {
-      position = prompt(`Gracz: ${player1.name}`)
+      //! get position not from prompt but from clicked tile
+      /* position = prompt(`Gracz: ${player1.name}`) */
+      //!
       if (gameboard1.gameboard[position] === '') {
         lastPlayer = 'o'
         gameboard1.addToBoard(position, player1)
@@ -22,7 +24,9 @@ function gameState () {
         playRound()
       }
     } else if (lastPlayer === 'o') {
-      position = prompt(`Gracz: ${player2.name}`)
+      //! get position not from prompt but from clicked tile
+      /* position = prompt(`Gracz: ${player2.name}`) */
+      //!
       if (gameboard1.gameboard[position] === '') {
         lastPlayer = 'x'
         gameboard1.addToBoard(position, player2)
