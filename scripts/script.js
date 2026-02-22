@@ -15,7 +15,6 @@ function gameState () {
       } else {
         lastPlayer = 'x'
       }
-      gameboard1.showArray()
     } else if (lastPlayer === 'o') {
       position = prompt(`Gracz: ${player2.name}`)
       if (gameboard1.gameboard[position] === '') {
@@ -25,7 +24,6 @@ function gameState () {
       } else {
         lastPlayer = 'o'
       }
-      gameboard1.showArray()
     }
   }
   const hasWon = player => {
@@ -105,6 +103,7 @@ gameboard1.addToBoard(2, player2)
 gameboard1.addToBoard(4, player1)
 gameboard1.addToBoard(6, player2)
 gameboard1.addToBoard(7, player1) */
+gameState1.playRound()
 
 console.log(
   `${gameboard1.gameboard[0]} | ${gameboard1.gameboard[1]} | ${gameboard1.gameboard[2]}`
