@@ -145,4 +145,6 @@ console.log(
 
 //*gameboard array [ , , ] [ , , ] [ , , ] (3 rows, 3 collumns). I will have to somehow call object and put my choices at specific position in array. ex. /playerX(9)? puts X in bottom right corner
 
+//!        UI        UI        UI        UI        UI        UI        UI        UI        UI
+
 //? testing: You should be checking for all winning 3-in-a-rows and ties. | Don’t forget the logic that keeps players from playing in spots that are already taken!
