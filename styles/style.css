@@ -21,6 +21,33 @@ body {
   border: 1px solid white;
   aspect-ratio: 1/1;
 }
-
+#element-one {
+  border-left: none;
+  border-top: none;
+}
+#element-two {
+  border-top: none;
+}
+#element-three {
+  border-right: none;
+  border-top: none;
+}
+#element-four {
+  border-left: none;
+}
+#element-six {
+  border-right: none;
+}
+#element-seven {
+  border-left: none;
+  border-bottom: none;
+}
+#element-eight {
+  border-bottom: none;
+}
+#element-nine {
+  border-right: none;
+  border-bottom: none;
+}
 .element__icon {
 }
