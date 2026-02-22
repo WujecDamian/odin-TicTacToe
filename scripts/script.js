@@ -7,7 +7,8 @@ const ui = {
   playerOne: document.querySelector('#score1'),
   playerTwo: document.querySelector('#score2'),
   iconNow: document.querySelector('.icon__now'),
-  gridElement: document.querySelectorAll('.grid__element')
+  gridElement: document.querySelectorAll('.grid__element'),
+  gameAlert: document.querySelector('.game__alert')
 }
 
 //* so 3 objects: game (state of the game), player, gameboard
@@ -120,8 +121,16 @@ function gameState () {
       console.log(player.getPlayerPoints())
       if (player.sign === 'o') {
         ui.playerOne.innerText = `${player.getPlayerPoints()}`
+        ui.gameAlert.innerText = `${player.name} Won!`
+        setTimeout(() => {
+          ui.gameAlert.innerText = ``
+        }, 2000)
       } else {
         ui.playerTwo.innerText = `${player.getPlayerPoints()}`
+        ui.gameAlert.innerText = `${player.name} Won!`
+        setTimeout(() => {
+          ui.gameAlert.innerText = ``
+        }, 2000)
       }
       gameState1.resetGame()
     } else {
@@ -139,23 +148,27 @@ function gameState () {
     }
     if (isFull === 9) {
       console.log(`It's a draw!`)
-      ui.iconNow.innerText = 'Draw'
+      ui.gameAlert.innerText = `Draw!`
+      gameState1.resetGame()
+
       setTimeout(() => {
-        gameState1.resetGame()
+        ui.gameAlert.innerText = ``
       }, 2000)
     } else {
       console.log(`Not a draw yet!`)
     }
   }
   const resetGame = () => {
-    gameboard1.clearArray()
-    gameboard1.gameboard.length = 0
-    gameboard1.clearArray()
+    setTimeout(() => {
+      gameboard1.clearArray()
+      gameboard1.gameboard.length = 0
+      gameboard1.clearArray()
 
-    /*     for (let i = 0; i < 9; i++) {
+      /*     for (let i = 0; i < 9; i++) {
       gameboard1.gameboard[i] = ''
     } */
-    console.table(gameboard1.gameboard)
+      console.table(gameboard1.gameboard)
+    }, 2000)
     ui.gridElement.forEach(element => {
       setTimeout(() => {
         element.children[0].src = ''
