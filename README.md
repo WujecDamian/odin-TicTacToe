@@ -1,5 +1,8 @@
 # Tic-Tac-Toe
 
+Live preview \/
+[https://wujecdamian.github.io/odin-TicTacToe/]
+
 Simple, stylish Tic-Tac-Toe game created with HTML, CSS and vanilla JavaScript.
 
 Two players take turns placing their marks (circle / cross) on a 3×3 grid.  
