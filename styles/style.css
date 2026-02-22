@@ -55,31 +55,31 @@ body {
 
   cursor: pointer;
 }
-#element-one {
+#element-one-0 {
   border-left: none;
   border-top: none;
 }
-#element-two {
+#element-two-1 {
   border-top: none;
 }
-#element-three {
+#element-three-2 {
   border-right: none;
   border-top: none;
 }
-#element-four {
+#element-four-3 {
   border-left: none;
 }
-#element-six {
+#element-six-5 {
   border-right: none;
 }
-#element-seven {
+#element-seven-6 {
   border-left: none;
   border-bottom: none;
 }
-#element-eight {
+#element-eight-7 {
   border-bottom: none;
 }
-#element-nine {
+#element-nine-8 {
   border-right: none;
   border-bottom: none;
 }
