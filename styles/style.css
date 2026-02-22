@@ -40,6 +40,7 @@ body {
 }
 .grid__element {
   display: grid;
+  user-select: none;
   place-content: center;
   border: 3px solid rgba(22, 0, 223, 0.5);
   filter: drop-shadow(0px 0px 30px rgba(0, 22, 223, 1));
@@ -100,4 +101,12 @@ body {
 }
 .red {
   background-color: red;
+}
+.game__alert {
+  text-align: center;
+  margin-top: 0;
+  padding-top: 0;
+  min-height: 35px;
+  filter: drop-shadow(0px 0px 15px rgba(255, 255, 255, 0.85));
+  text-shadow: 0px 0px 35px rgba(255, 255, 255, 0.7);
 }
